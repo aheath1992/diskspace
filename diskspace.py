@@ -39,20 +39,19 @@ Check partition
 '''
 
 def space(partition, threshold):
-    for p in partition:
-        df = subprocess.Popen(['df', '-h'], stdout=subprocess.PIPE)
-        for line in df.stdout:
-            splitline = line.decode().split()
-            if splitline[5] == p:
-                if int(splitline[4][:-1]) > threshold:
-                    return True
-                else:
-                    return False
+    df = subprocess.Popen(['df', '-h', partition], stdout=subprocess.PIPE)
+    for line in df.stdout:
+        splitline = line.decode().split()
+        splitline[5] == partition
+        if splitline[4][:-1] > threshold:
+            return True
+        else:
+            return False
 
 def main():
     fields = {
             "partition": {"required": True, "type": "str"},
-            "threshold": {"required": True, "type": "int"}
+            "threshold": {"required": True, "type": "str"}
             }
     module = AnsibleModule(argument_spec=fields)
     partition = module.params['partition']
