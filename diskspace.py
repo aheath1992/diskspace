@@ -12,7 +12,7 @@ module: diskspace
 
 short_description: Module that checks disk space of a pertition/
 
-version_add: "1.0.0"
+version_add: "1.0.1"
 
 description: This module checks provided partition(s) to see if they are over a set threshold.
 
